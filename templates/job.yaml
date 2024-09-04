@@ -1,4 +1,4 @@
-#{{- if .Values.schemaLoadJob.create -}}
+{{- if .Values.schemaLoadJob.create -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -10,13 +10,14 @@ spec:
     spec:
       serviceAccountName: {{ .Values.component }}
       containers:
-      - name: schema-loader
-        image: 667211563329.dkr.ecr.us-east-1.amazonaws.com/schema-loader:2.0.0
-#          args: [ "{{ .Values.schemaLoadJob.type }}", "{{ .Values.component }}" ]
-#          env:
-#            - name: env
-#              value: {{ .Values.env }}
+        - name: schema-loader
+          image: 667211563329.dkr.ecr.us-east-1.amazonaws.com/schema-loader:2.0.1
+          args: [ "{{ .Values.schemaLoadJob.type }}", "{{ .Values.component }}" ]
+          env:
+            - name: env
+              value: {{ .Values.env }}
 
       restartPolicy: Never
   backoffLimit: 1
-#{{- end }}
+{{- end }}
+
