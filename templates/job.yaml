@@ -5,8 +5,8 @@ metadata:
   name: {{ .Values.component }}-schema-loader
   labels:
     component: {{ .Values.component }}
-#  annotations:
-#    "helm.sh/hook": "pre-install"
+  annotations:
+    "helm.sh/hook": "pre-install"
 spec:
   template:
     spec:
