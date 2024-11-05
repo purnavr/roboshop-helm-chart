@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    component: {{ .Values.component }}
-    #{{- include "roboshop.selectorLabels" . | nindent 4 }}
+    #component: {{ .Values.component }}
+    {{- include "roboshop.selectorLabels" . | nindent 4 }}
